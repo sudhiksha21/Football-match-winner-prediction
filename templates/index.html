@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Football Match Predictor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>⚽ Football Match Predictor</h1>
+
+    <form method="POST">
+        <select name="team" required>
+            <option value="">Select Team</option>
+            {% for t in teams %}
+            <option value="{{ t }}">{{ t }}</option>
+            {% endfor %}
+        </select>
+
+        <select name="opponent" required>
+            <option value="">Select Opponent</option>
+            {% for t in teams %}
+            <option value="{{ t }}">{{ t }}</option>
+            {% endfor %}
+        </select>
+
+        <select name="venue">
+            <option value="Home">Home</option>
+            <option value="Away">Away</option>
+        </select>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2>Prediction: {{ prediction }}</h2>
+        <p>Confidence: {{ confidence }}%</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
